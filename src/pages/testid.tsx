@@ -22,7 +22,6 @@ export const TestId: React.FC = () => {
         })
     }, [id])
 
-    console.log("data", data)
     //@ts-ignore
     return <>{Object.keys(data).map((i: any, key: number) => (<>{i}:{JSON.stringify(data[i])}<br /></>))}</>
 }
