@@ -2,6 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import { Routes, Route, Link } from "react-router-dom";
 import './App.css';
+import { TestComponent } from './pages/testdb';
+import { TestId } from './pages/testid';
+import { Create } from './pages/CRUD/create';
 
 function Home() {
   return (
@@ -36,13 +39,17 @@ function About() {
 
 
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <h1>Welcome to React Router!</h1>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<TestComponent />} />
+        <Route path="create" element={<Create />} />
+
+        <Route path="home" element={<Home />} />
         <Route path="about" element={<About />} />
+        <Route path="tool/:id" element={<TestId />} />
       </Routes>
     </div>
   );
