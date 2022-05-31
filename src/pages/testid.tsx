@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
+import { Container, Narrow } from "../components/scaffolding/container";
 import { db, toolDb } from "../db/config";
 
 export const TestId: React.FC = () => {
@@ -22,6 +23,14 @@ export const TestId: React.FC = () => {
         })
     }, [id])
 
-    //@ts-ignore
-    return <>{Object.keys(data).map((i: any, key: number) => (<>{i}:{JSON.stringify(data[i])}<br /></>))}</>
+    return (
+        <Container type="fluid">
+            <Narrow>
+                {Object.keys(data).map((i: any, key: number) => (
+                    //@ts-ignore
+                <>{i}:{JSON.stringify(data[i])}<br /></>
+                ))}
+            </Narrow>
+        </Container>
+    )
 }

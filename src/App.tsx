@@ -5,6 +5,8 @@ import { TestComponent } from './pages/testdb';
 import { TestId } from './pages/testid';
 import { Create } from './pages/CRUD/create';
 import { Login } from './pages/Login';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './style/normalization.scss';
 
 
 

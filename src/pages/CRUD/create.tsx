@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Container, Narrow } from '../../components/scaffolding/container';
 import { db } from '../../db/config'
 
 export const Create: React.FC = () => {
@@ -20,23 +21,36 @@ export const Create: React.FC = () => {
         }
 
     };
-    if(saved) {
+    if (saved) {
         return (<>Saved</>)
     } else {
         return (
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <label>First</label><br />
-                <input {...register('firstName')} /><br />
-    
-                <label>Last</label><br />
-                <input {...register('lastName', { required: true })} /><br />
-                {errors.lastName && <p>Last name is required.</p>}
-    
-                <label>Age</label><br />
-                <input {...register('age', { pattern: /\d+/ })} /><br />
-                {errors.age && <p>Please enter number for age.</p>}
-                <input type="submit" />
-            </form>
+            <Container type="fluid">
+                <Narrow>
+                    <div className="card form-a mt-5">
+                        <div className="card-body">
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <div className="mb-3">
+                                    <label className="form-label">First</label>
+                                    <input className="form-control" {...register('firstName')} />
+                                </div>
+                                <div className="mb-3">
+                                    <label className="form-label">Last</label>
+                                    <input className="form-control" {...register('lastName', { required: true })} />
+                                    {errors.lastName && <p>Last name is required.</p>}
+                                </div>
+                                <div className="mb-3">
+                                    <label className="form-label">Age</label>
+                                    <input className="form-control" {...register('age', { pattern: /\d+/ })} />
+                                    {errors.age && <p>Please enter number for age.</p>}
+                                </div>
+                                <button type="submit" className="btn btn-primary mt-1">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </Narrow>
+            </Container>
+
         )
     }
 

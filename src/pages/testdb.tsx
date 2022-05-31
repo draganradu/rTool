@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Container, Narrow } from "../components/scaffolding/container";
 import { db, toolDb } from "../db/config";
 
 export const TestComponent: React.FC = () => {
@@ -35,7 +36,19 @@ export const TestComponent: React.FC = () => {
     if (data.length === 0) {
         return (<>Nope</>);
     } else {
-        return (<>{data.map((i: toolDb, key: number) => (<><Link to={`tool/${i.id}`} key={key}>{i.id}</Link><hr /></>))}</>)
+        return (
+            <Container type="fluid">
+                <Narrow>
+                    <ul className="list-group list-group-flush">
+                        {data.map((i: toolDb, key: number) => (
+                            <li className="list-group-item">
+                                <Link to={`/tool/${i.id}`} key={key} className="a-clean">{i.id}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </Narrow>
+            </Container>
+        )
 
     }
 }
