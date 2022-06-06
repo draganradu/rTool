@@ -6,12 +6,12 @@ const Sep: React.FC = () => {
 
 export const Footer: React.FC = () => {
     return (
-        <div className="p-2">
+        <footer className="p-2">
             <Link to="/" className="a-clean">Login</Link> 
             <Sep />
             <Link to="/list" className="a-clean">List</Link> 
             <Sep />
             <Link to="/create" className="a-clean">Create</Link> 
-        </div>
+        </footer>
     )
 }

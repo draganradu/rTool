@@ -1,5 +1,6 @@
 import { Footer } from "../footer"
 import { Header } from "../header"
+import { Sidebar } from "../sidebar"
 
 interface ContainerType {
     type?: "fixed" | "fluid",
@@ -12,6 +13,7 @@ export const Container: React.FC<ContainerType> = (props) => {
     const { type = "fluid", footer, header, children } = props
     return (
         <div className="page-layout">
+            <Sidebar />
             <Header />
             <div className={`grow container${type === "fixed" ? "" : "-fluid"}`}>
                 <div className="row">

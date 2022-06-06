@@ -12,24 +12,32 @@ export const TestId: React.FC = () => {
 
     useEffect(() => {
         setIsPending(true)
-        db.collection("toolTest").doc(id).get().then((doc) => {
+        const sub = db.collection("toolTest").doc(id).onSnapshot((doc) => {
             if (doc.exists) {
                 setData(doc.data() as toolDb)
             }
-
-        }).catch(err => {
-            setError(true)
-            setIsPending(false)
         })
+
+        return () => sub()
     }, [id])
 
+    const updateOnClick = () => {
+        console.log("fire")
+        db.collection("toolTest").doc(id).update(
+            { title: "Ana are mere" }
+        )
+    }
     return (
         <Container type="fluid">
             <Narrow>
                 {Object.keys(data).map((i: any, key: number) => (
                     //@ts-ignore
-                <>{i}:{JSON.stringify(data[i])}<br /></>
+                    <>{i}:{JSON.stringify(data[i])}<br /></>
                 ))}
+
+            </Narrow>
+            <Narrow>
+                <span onClick={() => { updateOnClick() }}>Buton</span>
             </Narrow>
         </Container>
     )

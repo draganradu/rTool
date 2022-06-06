@@ -5,29 +5,24 @@ import { db, toolDb } from "../db/config";
 
 export const TestComponent: React.FC = () => {
     const [data, setData] = useState<toolDb[]>([])
-    const [isPendint, setIsPending] = useState(false)
     const [error, setError] = useState(false)
 
     useEffect(() => {
-        setIsPending(true)
-        db.collection("toolTest").get().then((snapshot) => {
-
+        const subscription = db.collection("toolTest").onSnapshot((snapshot) => {
             if (snapshot.empty) {
                 setError(true)
-                setIsPending(false)
             } else {
                 let results: toolDb[] = []
                 snapshot.docs.forEach(doc => {
                     results.push({ id: doc.id, ...doc.data() } as toolDb)
                 })
                 setData(results)
-                setIsPending(false)
-
             }
-        }).catch(err => {
+        }, (err) => {
             setError(true)
-            setIsPending(false)
         })
+
+        return () => subscription()
     }, [])
 
 
