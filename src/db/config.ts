@@ -1,15 +1,9 @@
 import firebase from "firebase/app";
-import "firebase/firestore"
+import "firebase/firestore";
+import "firebase/auth";
+import { toolDb } from "./types";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
-export interface toolDb {
-  CallingName: string,
-  ID: Number, // needs to be removed in favor of id
-  IDClass: "A", // needs to be enumed
-  Size: string, // size
-  SubTools: string, // This should be an array of referances
-  id: string,  // This should be the actual id
-}
 
 const firebaseConfig = {
   apiKey: "AIzaSyB3Kr3Upe1sZaDJWCnWfSUqp5Wnm_2R--g",
@@ -27,5 +21,7 @@ firebase.initializeApp(firebaseConfig)
 
 // store init
 const db = firebase.firestore()
+const auth = firebase.auth()
 
-export { db }
+export { db, auth };
+export type { toolDb };

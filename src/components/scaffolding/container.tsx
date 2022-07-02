@@ -6,11 +6,14 @@ interface ContainerType {
     type?: "fixed" | "fluid",
     footer?: boolean,
     header?: boolean,
-    children?: React.ReactNode
+    children?: React.ReactNode,
+    title?: string,
 }
 
 export const Container: React.FC<ContainerType> = (props) => {
-    const { type = "fluid", footer, header, children } = props
+    const { type = "fluid", footer, header, children, title = "rTools" } = props
+    document.title = title;
+    
     return (
         <div className="page-layout">
             <Sidebar />

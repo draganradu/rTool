@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Container, Narrow } from '../../components/scaffolding/container';
-import { db } from '../../db/config'
+// import { db } from '../../db/config'
 
 export const Create: React.FC = () => {
     const [saved, setSaved] = useState(false)
@@ -12,9 +12,9 @@ export const Create: React.FC = () => {
     } = useForm();
     const onSubmit = (data: any) => {
 
-        try {
+        try { 
             console.log("data saved", data)
-            db.collection("toolTest").add(data)
+            // db.collection("toolTest").add(data)
             setSaved(true)
         } catch {
             console.log("data not saved", data)
@@ -31,19 +31,15 @@ export const Create: React.FC = () => {
                         <div className="card-body">
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className="mb-3">
-                                    <label className="form-label">First</label>
-                                    <input className="form-control" {...register('firstName')} />
+                                    <label className="form-label">Email</label>
+                                    <input className="form-control" {...register('email', { required: true })} />
                                 </div>
                                 <div className="mb-3">
-                                    <label className="form-label">Last</label>
-                                    <input className="form-control" {...register('lastName', { required: true })} />
+                                    <label className="form-label">Pass</label>
+                                    <input className="form-control" {...register('pass', { required: true })} />
                                     {errors.lastName && <p>Last name is required.</p>}
                                 </div>
-                                <div className="mb-3">
-                                    <label className="form-label">Age</label>
-                                    <input className="form-control" {...register('age', { pattern: /\d+/ })} />
-                                    {errors.age && <p>Please enter number for age.</p>}
-                                </div>
+
                                 <button type="submit" className="btn btn-primary mt-1">Submit</button>
                             </form>
                         </div>

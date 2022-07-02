@@ -32,7 +32,7 @@ export const TestComponent: React.FC = () => {
         return (<>Nope</>);
     } else {
         return (
-            <Container type="fluid">
+            <Container type="fluid" title="List">
                 <Narrow>
                     <ul className="list-group list-group-flush">
                         {data.map((i: toolDb, key: number) => (
