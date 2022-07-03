@@ -20,8 +20,10 @@ firebase.initializeApp(firebaseConfig)
 
 
 // store init
-const db = firebase.firestore()
-const auth = firebase.auth()
+const db = firebase.firestore() //projectFirestore
+const auth = firebase.auth() // projectAuth
 
-export { db, auth };
+const timestamp = firebase.firestore.Timestamp
+
+export { db, auth, timestamp };
 export type { toolDb };

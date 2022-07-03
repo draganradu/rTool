@@ -13,7 +13,7 @@ interface ContainerType {
 export const Container: React.FC<ContainerType> = (props) => {
     const { type = "fluid", footer, header, children, title = "rTools" } = props
     document.title = title;
-    
+
     return (
         <div className="page-layout">
             <Sidebar />
@@ -30,10 +30,19 @@ export const Container: React.FC<ContainerType> = (props) => {
     )
 }
 
-export const Narrow: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+export const Narrow: React.FC<{ children?: React.ReactNode, sansCard?: boolean }> = ({ children, sansCard }) => {
     return (
-        <div className="form-center justify-content-center d-flex">
-            {children}
+        <div className="form-center justify-content-center d-flex mt-4">
+            {sansCard ? (
+                <>{children}</>
+            ) : (
+                <div className="card form-a mt-5">
+                    <div className="card-body">
+                        {children}
+                    </div>
+                </div>
+            )}
+
         </div>
     )
 }

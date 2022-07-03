@@ -12,14 +12,14 @@ export const Sidebar: React.FC<{ comp?: string }> = ({ comp }) => {
         case "standard":
             return <div id="side-bar">
                 <span onClick={() => { logout() }}>
-                    <i className="bi bi-file-minus"></i>
+                    <i className="bi bi-file-minus"/>
                 </span>
             </div>
 
         default:
             return <div id="side-bar">
                 <span>
-                    <i className="bi bi-file-person"></i>
+                    <i className="bi bi-file-person"/>
                 </span>
             </div>
     }

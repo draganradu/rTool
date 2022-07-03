@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { Container, Narrow } from "../components/scaffolding/container";
 import { db, toolDb } from "../db/config";
+import { fireStoreDB } from "../db/enums";
 
 export const TestId: React.FC = () => {
     const { id } = useParams();
@@ -12,7 +13,7 @@ export const TestId: React.FC = () => {
 
     useEffect(() => {
         setIsPending(true)
-        const sub = db.collection("toolTest").doc(id).onSnapshot((doc) => {
+        const sub = db.collection(fireStoreDB.test).doc(id).onSnapshot((doc) => {
             if (doc.exists) {
                 setData(doc.data() as toolDb)
             }
@@ -23,7 +24,7 @@ export const TestId: React.FC = () => {
 
     const updateOnClick = () => {
         console.log("fire")
-        db.collection("toolTest").doc(id).update(
+        db.collection(fireStoreDB.test).doc(id).update(
             { title: "Ana are mere" }
         )
     }

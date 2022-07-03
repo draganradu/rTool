@@ -1,7 +1,9 @@
+@import "./skin.scss";
+
 // 0 | Cleanup Code
 
 .form-a {
-    width: 250px;
+    width: 350px;
 }
 
 .grow {
@@ -37,7 +39,7 @@
 // 3 | 0 | Footer & Header
 footer,
 header {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.0);
 }
 
 // 3 | 1 | Footer
@@ -46,5 +48,5 @@ header {
 
 // 3 | 3 | Body 
 body {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: var(--body-color)
 }

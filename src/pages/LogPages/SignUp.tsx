@@ -15,7 +15,7 @@ export const SignUp: React.FC<{ show?: boolean }> = ({ show = false }) => {
         try {
             console.log("data login", data)
             signUp(data.email, data.password, data.displayName);
-            // db.collection("toolTest").add(data)
+            // db.collection(fireStoreDB.test).add(data)
             setLogin(true)
         } catch {
             console.log("data not login", data)

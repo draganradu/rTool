@@ -15,7 +15,7 @@ export const LoginForm: React.FC<{ show?: boolean }> = ({ show = false }) => {
         try {
             login(data.email, data.password)
             console.log("data login", data)
-            // db.collection("toolTest").add(data)
+            // db.collection(fireStoreDB.test).add(data)
             // setLogin(true)
         } catch {
             console.log("data not login", data)

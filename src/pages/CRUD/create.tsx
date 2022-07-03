@@ -14,7 +14,7 @@ export const Create: React.FC = () => {
 
         try { 
             console.log("data saved", data)
-            // db.collection("toolTest").add(data)
+            // db.collection(fireStoreDB.test).add(data)
             setSaved(true)
         } catch {
             console.log("data not saved", data)
