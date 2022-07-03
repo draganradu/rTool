@@ -1,0 +1,3 @@
+[submodule "rToolPages"]
+	path = rToolPages
+	url = https://github.com/draganradu/rToolPages.git
