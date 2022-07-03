@@ -8,6 +8,7 @@ import { Create } from './pages/CRUD/create';
 import { Login } from './pages/Login';
 import { TestComponent } from './pages/testdb';
 import { TestId } from './pages/testid';
+import { PageTypes } from "./rToolPages/pageTypes";
 import './style/normalization.scss';
 
 
@@ -17,8 +18,8 @@ const App: React.FC = () => {
   if (authIsReady) {
     return (
       <Routes>
-        <Route path="/"  element={user ? <TestComponent /> : <Login />} />
-        <Route path={"/login"} element={user ? <TestComponent /> : <Login />} />
+        <Route path="/" element={user ? <TestComponent /> : <Login />} />
+        <Route path={PageTypes.login} element={user ? <TestComponent /> : <Login />} />
         {user && (
           <>
             <Route path="list" element={<TestComponent />} /> {/* to remove */}
@@ -26,9 +27,9 @@ const App: React.FC = () => {
 
 
             {/* user */}
-            <Route path="t/add/" element={<AllToolsList />} /> {/* List of all tools allTools */}
+            <Route path={PageTypes.addTool} element={<AllToolsList />} /> {/* List of all tools allTools */}
 
-            <Route path="t/tool/" element={<YourToolsList />} /> {/* List of all tools userTools*/}
+            <Route path={PageTypes.listTool} element={<YourToolsList />} /> {/* List of all tools userTools*/}
             <Route path="t/tool/:id" element={<TestId />} /> {/* single tool userTools*/}
 
             <Route path="t/update/" element={<TestId />} /> {/* Add tool to your tools userTools*/}
@@ -41,7 +42,7 @@ const App: React.FC = () => {
         )}
 
         {/* 404 */}
-        <Route path="*" element={user ? <TestComponent /> : <Login />} />  
+        <Route path="*" element={user ? <TestComponent /> : <Login />} />
       </Routes>
     );
   } else {
